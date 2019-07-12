@@ -165,6 +165,9 @@
     <ClCompile Include="glad.c" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="NoiseCS.cpp" />
+    <ClCompile Include="NoiseRef.cpp" />
+    <ClCompile Include="NoiseSSE.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NoiseCS.h" />
