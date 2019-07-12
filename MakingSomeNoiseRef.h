@@ -19,8 +19,8 @@ public:
 		{
 			unsigned long long time = __rdtsc(); // The processor time stamp records the number of clock cycles since the last reset
 
-			const float factorx = 8.0f / static_cast<float>(width - 1);
-			const float factory = 8.0f / static_cast<float>(height - 1);
+			const float factorx = 8.0f / static_cast<float>(width);
+			const float factory = 8.0f / static_cast<float>(height);
 
 			for (int y = 0; y < height; y++)
 			{

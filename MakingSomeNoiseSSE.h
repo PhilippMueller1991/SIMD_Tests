@@ -38,10 +38,10 @@ public:
 			unsigned long long time = __rdtsc(); // The processor time stamp records the number of clock cycles since the last reset
 
 			const __m128 factor = _mm_set_ps(
-				8.0f / static_cast<float>(height - 1),
-				8.0f / static_cast<float>(width - 1),
-				8.0f / static_cast<float>(height - 1),
-				8.0f / static_cast<float>(width - 1)
+				8.0f / static_cast<float>(height),
+				8.0f / static_cast<float>(width),
+				8.0f / static_cast<float>(height),
+				8.0f / static_cast<float>(width)
 			);
 
 			Vec4f v;
