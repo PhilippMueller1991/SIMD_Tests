@@ -167,12 +167,12 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MakingSomeNoiseCS.h" />
+    <ClInclude Include="NoiseCS.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="InstructionSetLevel.h" />
-    <ClInclude Include="MakingSomeNoiseRef.h" />
-    <ClInclude Include="MakingSomeNoiseSSE.h" />
+    <ClInclude Include="NoiseRef.h" />
+    <ClInclude Include="NoiseSSE.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

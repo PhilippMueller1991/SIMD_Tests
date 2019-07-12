@@ -29,19 +29,19 @@
     <ClInclude Include="InstructionSetLevel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MakingSomeNoiseSSE.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MakingSomeNoiseRef.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Settings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MakingSomeNoiseCS.h">
+    <ClInclude Include="NoiseCS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NoiseRef.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NoiseSSE.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -5,10 +5,7 @@
 #include "Settings.h"
 #include "Image.h"
 
-namespace Ref
-{
-
-class MakingSomeNoiseRef
+class NoiseRef
 {
 public:
 	static void CreateImage(int width, int height)
@@ -115,5 +112,3 @@ private:
 						   Dot( ur_x, ur_y, xf - 1.0f,	yf - 1.0f), u ), v );
 	}
 };
-
-}

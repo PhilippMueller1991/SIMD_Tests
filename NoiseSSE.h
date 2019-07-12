@@ -8,10 +8,7 @@
 #include "Settings.h"
 #include "Image.h"
 
-namespace SSE
-{
-
-class MakingSomeNoiseSSE
+class NoiseSSE
 {
 private:
 	union Vec4f {
@@ -320,5 +317,3 @@ private:
 		std::cout << '\n' << std::endl;
 	}
 };
-
-}

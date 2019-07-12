@@ -10,9 +10,6 @@
 #include <chrono>
 #include "Settings.h"
 
-namespace CS
-{
-
 class NoiseCS
 {
 public:
@@ -157,5 +154,3 @@ private:
 		return success;
 	}
 };
-
-}

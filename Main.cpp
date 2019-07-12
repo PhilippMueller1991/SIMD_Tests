@@ -3,20 +3,20 @@
 #include <string.h>
 
 #include "InstructionSetLevel.h"
-#include "MakingSomeNoiseRef.h"
-#include "MakingSomeNoiseSSE.h"
-#include "MakingSomeNoiseCS.h"
+#include "NoiseRef.h"
+#include "NoiseSSE.h"
+#include "NoiseCS.h"
 
 int main(int argc, char** argv)
 {
 	constexpr int width = 512;
 	constexpr int height = 512;
 
-	Ref::MakingSomeNoiseRef::CreateImage(width, height);
+	NoiseRef::CreateImage(width, height);
 
-	SSE::MakingSomeNoiseSSE::CreateImage(width, height);
+	NoiseSSE::CreateImage(width, height);
 
-	CS::MakingSomeNoiseCS::CreateImage(width, height);
+	NoiseCS::CreateImage(width, height);
 
 	return EXIT_SUCCESS;
 }
