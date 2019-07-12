@@ -1,0 +1,38 @@
+========= RELEASE x64 =========
+== Iter: 1000 
+== Res: 512 x 512
+== Best time taken
+
+------- Not set ----------
+Ref		  	   102'407'783		
+SSE		   		23'717'744
+
+Speedup = ~4.32
+
+------- SSE 2 ------------
+Ref		  	   102'246'852
+SSE		   		23'685'717
+ 
+Speedup = ~4.32
+
+------- AVX 2 ------------
+Ref 	   		17'291'545
+SSE		         9'660'674
+
+Speedup = ~1.8
+
+------- CS vs AVX 2 ------
+Ref				17'291'185
+SSE				 9'604'800
+CS 			     1'235'219
+
+Speedup to Ref = ~14
+Speedup to SSE = ~7.8
+
+------- CS vs AVX 2 no buffer alloc
+Ref				17'286'206
+SSE				 9'598'002
+CS 			       437'544   
+
+Speedup to Ref = ~39.5
+Speedup to SSE = ~21.9
