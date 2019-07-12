@@ -4,6 +4,7 @@
 #include <smmintrin.h>
 #include <iostream>
 #include <math.h>
+#include <chrono>
 #include "Settings.h"
 #include "Image.h"
 
@@ -32,10 +33,10 @@ public:
 
 		float* data = new float[width * height];
 
-		unsigned long long bestTime = ~0ll;
+		std::chrono::nanoseconds bestTime = std::chrono::nanoseconds::max();
 		for (int i = 0; i < Settings::iterations; i++)
 		{
-			unsigned long long time = __rdtsc(); // The processor time stamp records the number of clock cycles since the last reset
+			auto time = std::chrono::high_resolution_clock::now();
 
 			const __m128 factor = _mm_set_ps(
 				8.0f / static_cast<float>(height),
@@ -57,11 +58,11 @@ public:
 				}
 			}
 
-			time = __rdtsc() - time;
-			if (time < bestTime)
-				bestTime = time;
+			auto timeDelta = std::chrono::high_resolution_clock::now() - time;
+			if (timeDelta < bestTime)
+				bestTime = timeDelta;
 		}
-		printf("SSE4.2 implementation executed in: %lld cycles\n\n", bestTime);
+		printf("SSE4.2 implementation executed in: %.4f ms\n\n", std::chrono::duration_cast<std::chrono::microseconds>(bestTime).count() / 1000.0);
 
 		// Write data
 		Image::SaveBitmap("NoiseSSE", width, height, data);

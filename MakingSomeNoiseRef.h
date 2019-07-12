@@ -1,6 +1,7 @@
 #pragma once
 
 #include <math.h>
+#include <chrono>
 #include "Settings.h"
 #include "Image.h"
 
@@ -14,10 +15,10 @@ public:
 	{
 		float* data = new float[width * height];
 
-		unsigned long long bestTime = ~0ll;
+		std::chrono::nanoseconds bestTime = std::chrono::nanoseconds::max();
 		for(int i=0; i<Settings::iterations; i++)
 		{
-			unsigned long long time = __rdtsc(); // The processor time stamp records the number of clock cycles since the last reset
+			auto time = std::chrono::high_resolution_clock::now();
 
 			const float factorx = 8.0f / static_cast<float>(width);
 			const float factory = 8.0f / static_cast<float>(height);
@@ -33,11 +34,11 @@ public:
 				}
 			}
 
-			time = __rdtsc() - time;
-			if (time < bestTime)
-				bestTime = time;
+			auto timeDelta = std::chrono::high_resolution_clock::now() - time;
+			if (timeDelta < bestTime)
+				bestTime = timeDelta;
 		}
-		printf("Reference implementation executed in: %lld cycles\n\n", bestTime);
+		printf("Reference implementation executed in: %.4f ms\n\n", std::chrono::duration_cast<std::chrono::microseconds>(bestTime).count() / 1000.0);
 
 		// Write data
 		Image::SaveBitmap("NoiseRef", width, height, data);

@@ -7,6 +7,7 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <math.h>
+#include <chrono>
 #include "Settings.h"
 
 namespace CS
@@ -106,10 +107,10 @@ public:
 		
 		float* data;
 
-		unsigned long long bestTime = ~0ll;
+		std::chrono::nanoseconds bestTime = std::chrono::nanoseconds::max();
 		for (int i = 0; i < Settings::iterations; i++)
 		{
-			unsigned long long time = __rdtsc(); // The processor time stamp records the number of clock cycles since the last reset
+			auto time = std::chrono::high_resolution_clock::now();
 
 			// Generate buffer
 			GLuint buffer;
@@ -124,13 +125,13 @@ public:
 			// Read
 			data = static_cast<float*>(glMapBuffer(GL_SHADER_STORAGE_BUFFER, GL_READ_ONLY));
 
-			time = __rdtsc() - time;
-			if (time < bestTime)
-				bestTime = time;
+			auto timeDelta = std::chrono::high_resolution_clock::now() - time;
+			if (timeDelta < bestTime)
+				bestTime = timeDelta;
 
 			glUnmapBuffer(GL_SHADER_STORAGE_BUFFER);
 		}
-		printf("Compute shader implementation executed in: %lld cycles\n\n", bestTime);
+		printf("Compute shader implementation executed in: %.4f ms\n\n", std::chrono::duration_cast<std::chrono::microseconds>(bestTime).count() / 1000.0);
 
 		// Write to image
 		Image::SaveBitmap("NoiseCS", width, height, data);
