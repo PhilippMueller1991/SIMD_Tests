@@ -64,13 +64,7 @@ void NoiseSSE::CreateImage(int width, int height)
 
 inline __m128 NoiseSSE::Fade(__m128 t) noexcept
 {
-	return
-		_mm_mul_ps(
-			_mm_mul_ps(t, t),
-			_mm_sub_ps(
-				_mm_set1_ps(3.0f), _mm_mul_ps(_mm_set1_ps(2.0f), t)
-			)
-		);
+	return _mm_mul_ps(_mm_mul_ps(t, t), _mm_sub_ps(_mm_set1_ps(3.0f), _mm_mul_ps(_mm_set1_ps(2.0f), t)));
 }
 
 inline float NoiseSSE::Fade(float t) noexcept
@@ -120,12 +114,7 @@ void NoiseSSE::Hash(__m128 x, __m128& out)
 	add = _mm_shuffle_ps(add, add, _MM_SHUFFLE(3, 1, 2, 0));
 
 	__m128 tmp = Fract(_mm_mul_ps(mul, add));
-	tmp = Fract(
-		_mm_mul_ps(
-			_mm_set1_ps(16.0f),
-			_mm_mul_ps(k, tmp)
-		)
-	);
+	tmp = Fract(_mm_mul_ps(_mm_set1_ps(16.0f),_mm_mul_ps(k, tmp)));
 
 	out = _mm_add_ps(_mm_set1_ps(-1.0f), _mm_mul_ps(_mm_set1_ps(2.0f), tmp));
 }
@@ -212,7 +201,10 @@ __m128 NoiseSSE::PerlinNoise(const __m128& v)
 	__m128 dotU1 = Dot(hash1_u, _mm_sub_ps(_mm_shuffle_ps(f, f, _MM_SHUFFLE(3, 2, 3, 2)), _mm_set_ps(1.0f, 1.0f, 1.0f, 0.0f)));
 	__m128 dot1 = _mm_shuffle_ps(dotL1, dotU1, _MM_SHUFFLE(3, 2, 1, 0));
 
-	__m128 lerp_horizontal = Lerp(_mm_shuffle_ps(dot0, dot1, _MM_SHUFFLE(2, 0, 2, 0)), _mm_shuffle_ps(dot0, dot1, _MM_SHUFFLE(3, 1, 3, 1)), _mm_shuffle_ps(u, u, _MM_SHUFFLE(2, 2, 0, 0)));
+	__m128 lerp_horizontal = Lerp(
+		_mm_shuffle_ps(dot0, dot1, _MM_SHUFFLE(2, 0, 2, 0)),
+		_mm_shuffle_ps(dot0, dot1, _MM_SHUFFLE(3, 1, 3, 1)),
+		_mm_shuffle_ps(u, u, _MM_SHUFFLE(2, 2, 0, 0)));
 
 	__m128 lerp_vertical = Lerp(
 		_mm_shuffle_ps(lerp_horizontal, lerp_horizontal, _MM_SHUFFLE(2, 2, 0, 0)),
