@@ -70,16 +70,16 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>D:\#Programming\Parallelism\Libraries\Includes;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\#Programming\Parallelism\Libraries\Libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)\Libraries\Includes;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)\Libraries\Libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>$(ProjectDir)\Libraries\Includes;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)\Libraries\Libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>D:\#Programming\Parallelism\Libraries\Includes;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\#Programming\Parallelism\Libraries\Libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)\Libraries\Includes;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)\Libraries\Libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>$(ProjectDir)\Libraries\Includes;$(IncludePath)</IncludePath>
