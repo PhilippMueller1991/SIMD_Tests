@@ -2,6 +2,7 @@
 
 // Reference implementation https://gist.github.com/rygorous/4172889
 
+#include <intrin.h>
 #include <immintrin.h>
 #include <stdlib.h>
 

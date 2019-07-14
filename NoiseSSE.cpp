@@ -15,7 +15,6 @@ void NoiseSSE::CreateImage(int width, int height)
 {
 	//RunTests();
 
-	// We calculate one pixel more but can use our SSE code
 	int widthSSE = width;
 	if (width % 2 != 0)
 	{
@@ -53,7 +52,7 @@ void NoiseSSE::CreateImage(int width, int height)
 		if (timeDelta < bestTime)
 			bestTime = timeDelta;
 	}
-	printf("SSE4.2 implementation executed in: %.4f ms\n\n", std::chrono::duration_cast<std::chrono::microseconds>(bestTime).count() / 1000.0);
+	std::cout << std::chrono::duration_cast<std::chrono::microseconds>(bestTime).count() << "ns\n";
 
 	// Write data
 	Image::SaveBitmap("NoiseSSE", width, height, data);

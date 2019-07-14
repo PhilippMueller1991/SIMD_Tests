@@ -2,5 +2,5 @@
 
 namespace Settings
 {
-	constexpr int iterations = 1000;
+	constexpr int iterations = 100;
 }

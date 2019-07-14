@@ -1,5 +1,6 @@
 #include "NoiseRef.h"
 
+#include <iostream>
 #include <chrono>
 #include <math.h>
 #include "Settings.h"
@@ -32,7 +33,7 @@ void NoiseRef::CreateImage(int width, int height)
 		if (timeDelta < bestTime)
 			bestTime = timeDelta;
 	}
-	printf("Reference implementation executed in: %.4f ms\n\n", std::chrono::duration_cast<std::chrono::microseconds>(bestTime).count() / 1000.0);
+	std::cout << std::chrono::duration_cast<std::chrono::microseconds>(bestTime).count() << "ns\n";
 
 	// Write data
 	Image::SaveBitmap("NoiseRef", width, height, data);

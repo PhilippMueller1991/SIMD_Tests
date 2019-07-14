@@ -87,15 +87,7 @@ void NoiseCS::CreateImage(int width, int height)
 
 	glDeleteShader(shader);
 
-	int work_grp_cnt[3];
-	glGetIntegeri_v(GL_MAX_COMPUTE_WORK_GROUP_COUNT, 0, &work_grp_cnt[0]);
-	glGetIntegeri_v(GL_MAX_COMPUTE_WORK_GROUP_COUNT, 1, &work_grp_cnt[1]);
-	glGetIntegeri_v(GL_MAX_COMPUTE_WORK_GROUP_COUNT, 2, &work_grp_cnt[2]);
-
-	printf("max global (total) work group size x:%i y:%i z:%i\n", work_grp_cnt[0], work_grp_cnt[1], work_grp_cnt[2]);
-
 	float* data;
-
 	std::chrono::nanoseconds bestTime = std::chrono::nanoseconds::max();
 	for (int i = 0; i < Settings::iterations; i++)
 	{
@@ -118,12 +110,15 @@ void NoiseCS::CreateImage(int width, int height)
 		if (timeDelta < bestTime)
 			bestTime = timeDelta;
 
-		glUnmapBuffer(GL_SHADER_STORAGE_BUFFER);
+		if(i < Settings::iterations-1)
+			glUnmapBuffer(GL_SHADER_STORAGE_BUFFER);
 	}
-	printf("Compute shader implementation executed in: %.4f ms\n\n", std::chrono::duration_cast<std::chrono::microseconds>(bestTime).count() / 1000.0);
+	std::cout << std::chrono::duration_cast<std::chrono::microseconds>(bestTime).count() << "ns\n";
 
 	// Write to image
 	Image::SaveBitmap("NoiseCS", width, height, data);
+
+	glUnmapBuffer(GL_SHADER_STORAGE_BUFFER);
 
 	glDeleteProgram(program);
 
