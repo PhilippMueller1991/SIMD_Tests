@@ -30,9 +30,9 @@ void NoiseSSE::CreateImage(int width, int height)
 
 		const __m128 factor = _mm_set_ps(
 			8.0f / static_cast<float>(height),
-			8.0f / static_cast<float>(width),
+			8.0f / static_cast<float>(widthSSE),
 			8.0f / static_cast<float>(height),
-			8.0f / static_cast<float>(width)
+			8.0f / static_cast<float>(widthSSE)
 		);
 
 		Vec4f v;
@@ -55,7 +55,7 @@ void NoiseSSE::CreateImage(int width, int height)
 	std::cout << std::chrono::duration_cast<std::chrono::microseconds>(bestTime).count() << "ns\n";
 
 	// Write data
-	Image::SaveBitmap("NoiseSSE", width, height, data);
+	Image::SaveBitmap("NoiseSSE", widthSSE, height, data);
 
 	// Cleanup
 	delete[] data;
