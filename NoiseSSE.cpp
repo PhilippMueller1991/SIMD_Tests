@@ -3,7 +3,6 @@
 #include <iostream>
 #include <math.h>
 #include <chrono>
-#include "Settings.h"
 #include "Image.h"
 
 union Vec4f {
@@ -11,7 +10,7 @@ union Vec4f {
 	__m128 row;
 };
 
-void NoiseSSE::CreateImage(int width, int height)
+void NoiseSSE::CreateImage(int width, int height, int iterations)
 {
 	//RunTests();
 
@@ -24,7 +23,7 @@ void NoiseSSE::CreateImage(int width, int height)
 	float* data = new float[widthSSE * height];
 
 	std::chrono::nanoseconds bestTime = std::chrono::nanoseconds::max();
-	for (int i = 0; i < Settings::iterations; i++)
+	for (int i = 0; i < iterations; i++)
 	{
 		auto time = std::chrono::high_resolution_clock::now();
 

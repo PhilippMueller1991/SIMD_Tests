@@ -6,7 +6,7 @@
 class NoiseSSE
 {
 public:
-	static void CreateImage(int width, int height);
+	static void CreateImage(int width, int height, int iterations);
 
 private:
 	static inline __m128 Fade(__m128 t) noexcept;

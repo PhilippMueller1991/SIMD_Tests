@@ -3,10 +3,9 @@
 #include <iostream>
 #include <math.h>
 #include <chrono>
-#include "Settings.h"
 #include "Image.h"
 
-void NoiseCS::CreateImage(int width, int height)
+void NoiseCS::CreateImage(int width, int height, int iterations)
 {
 	const char* shader_source = "																							\
 			#version 430																									\n\
@@ -89,7 +88,7 @@ void NoiseCS::CreateImage(int width, int height)
 
 	float* data;
 	std::chrono::nanoseconds bestTime = std::chrono::nanoseconds::max();
-	for (int i = 0; i < Settings::iterations; i++)
+	for (int i = 0; i < iterations; i++)
 	{
 		auto time = std::chrono::high_resolution_clock::now();
 

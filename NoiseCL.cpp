@@ -3,12 +3,11 @@
 #include <iostream>
 #include <chrono>
 #include "CL/cl.hpp"
-#include "Settings.h"
 #include "Image.h"
 
 //http://simpleopencl.blogspot.com/2013/06/tutorial-simple-start-with-opencl-and-c.html
 
-void NoiseCL::CreateImage(int width, int height)
+void NoiseCL::CreateImage(int width, int height, int iterations)
 {
 	static bool first_call = true;
 
@@ -98,7 +97,7 @@ void NoiseCL::CreateImage(int width, int height)
 	cl::CommandQueue queue;
 
 	std::chrono::nanoseconds bestTime = std::chrono::nanoseconds::max();
-	for (int i = 0; i < Settings::iterations; i++)
+	for (int i = 0; i < iterations; i++)
 	{
 		auto time = std::chrono::high_resolution_clock::now();
 

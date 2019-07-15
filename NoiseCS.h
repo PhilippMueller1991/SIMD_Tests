@@ -9,7 +9,7 @@
 class NoiseCS
 {
 public:
-	static void CreateImage(int width, int height);
+	static void CreateImage(int width, int height, int iterations);
 
 private:
 	bool static ShaderErrorInfo(GLuint shader);

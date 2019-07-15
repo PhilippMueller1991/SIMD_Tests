@@ -3,15 +3,14 @@
 #include <iostream>
 #include <chrono>
 #include <math.h>
-#include "Settings.h"
 #include "Image.h"
 
-void NoiseRef::CreateImage(int width, int height)
+void NoiseRef::CreateImage(int width, int height, int iterations)
 {
 	float* data = new float[width * height];
 
 	std::chrono::nanoseconds bestTime = std::chrono::nanoseconds::max();
-	for (int i = 0; i < Settings::iterations; i++)
+	for (int i = 0; i < iterations; i++)
 	{
 		auto time = std::chrono::high_resolution_clock::now();
 

@@ -3,7 +3,7 @@
 class NoiseRef
 {
 public:
-	static void CreateImage(int width, int height);
+	static void CreateImage(int width, int height, int iterations);
 
 private:
 	static inline float Fade(float t) noexcept;
