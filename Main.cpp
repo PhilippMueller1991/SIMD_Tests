@@ -5,6 +5,7 @@
 #include "NoiseRef.h"
 #include "NoiseSSE.h"
 #include "NoiseCS.h"
+#include "NoiseCL.h"
 
 int start = 16;
 int end = 4096;
@@ -28,6 +29,10 @@ int main(int argc, char** argv)
 	std::cout << "\nCS implementation:\n";
 	for (int i = start; i <= end; i *= 2)
 		NoiseCS::CreateImage(i, i);
+
+	std::cout << "\nCL implementation:\n";
+	for (int i = start; i <= end; i *= 2)
+		NoiseCL::CreateImage(i, i);
 
 	fclose(logFile);
 
