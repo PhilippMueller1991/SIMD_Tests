@@ -103,17 +103,14 @@ void NoiseCS::CreateImage(int width, int height)
 		glDispatchCompute((width + 31) / 32, (height + 31) / 32, 1);
 		glMemoryBarrier(GL_SHADER_STORAGE_BARRIER_BIT);
 
-		// Read
-		data = static_cast<float*>(glMapBuffer(GL_SHADER_STORAGE_BUFFER, GL_READ_ONLY));
-
 		auto timeDelta = std::chrono::high_resolution_clock::now() - time;
 		if (timeDelta < bestTime)
 			bestTime = timeDelta;
-
-		if(i < Settings::iterations-1)
-			glUnmapBuffer(GL_SHADER_STORAGE_BUFFER);
 	}
 	std::cout << std::chrono::duration_cast<std::chrono::microseconds>(bestTime).count() << "ns\n";
+
+	// Read
+	data = static_cast<float*>(glMapBuffer(GL_SHADER_STORAGE_BUFFER, GL_READ_ONLY));
 
 	// Write to image
 	Image::SaveBitmap("NoiseCS", width, height, data);

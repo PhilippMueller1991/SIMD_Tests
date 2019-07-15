@@ -21,7 +21,7 @@ void NoiseSSE::CreateImage(int width, int height)
 		widthSSE++;
 	}
 
-	float* data = new float[width * height];
+	float* data = new float[widthSSE * height];
 
 	std::chrono::nanoseconds bestTime = std::chrono::nanoseconds::max();
 	for (int i = 0; i < Settings::iterations; i++)

@@ -16,8 +16,6 @@ int main(int argc, char** argv)
 	FILE* logFile;
 	freopen_s(&logFile, "output.txt", "w", stdout);
 
-	std::cout << "Start resolution " << start << " to " << end << " res\n";
-
 	std::cout << "\nReference implementation:\n";
 	for (int i = start; i <= end; i *= 2)
 		NoiseRef::CreateImage(i, i);
