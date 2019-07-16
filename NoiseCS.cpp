@@ -106,7 +106,7 @@ void NoiseCS::CreateImage(int width, int height, int iterations)
 		if (timeDelta < bestTime)
 			bestTime = timeDelta;
 	}
-	std::cout << std::chrono::duration_cast<std::chrono::microseconds>(bestTime).count() << "ns\n";
+	std::cout << bestTime.count() << "ns\n";
 
 	// Read
 	data = static_cast<float*>(glMapBuffer(GL_SHADER_STORAGE_BUFFER, GL_READ_ONLY));

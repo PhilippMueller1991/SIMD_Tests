@@ -119,7 +119,7 @@ void NoiseCL::CreateImage(int width, int height, int iterations)
 		if (timeDelta < bestTime)
 			bestTime = timeDelta;
 	}
-	std::cout << std::chrono::duration_cast<std::chrono::microseconds>(bestTime).count() << "ns\n";
+	std::cout << bestTime.count() << "ns\n";
 
 	// Results
 	float* data = new float[element_count] { 0 };

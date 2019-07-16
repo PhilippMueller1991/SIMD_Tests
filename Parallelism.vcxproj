@@ -126,8 +126,8 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <BufferSecurityCheck>true</BufferSecurityCheck>
-      <OpenMPSupport>false</OpenMPSupport>
       <AdditionalIncludeDirectories>$(ProjectDir)\Libraries\Includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -149,8 +149,8 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <BufferSecurityCheck>true</BufferSecurityCheck>
-      <OpenMPSupport>false</OpenMPSupport>
       <AdditionalIncludeDirectories>$(ProjectDir)\Libraries\Includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -167,10 +167,7 @@
     <ClCompile Include="NoiseCS.cpp" />
     <ClCompile Include="NoiseRef.cpp" />
     <ClCompile Include="NoiseSSE.cpp" />
-    <ClCompile Include="OptimizationLimits.cpp">
-      <EnableEnhancedInstructionSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
-      <EnableEnhancedInstructionSet Condition="'$(Configuration)|$(Platform)'=='Release|x64'">AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
-    </ClCompile>
+    <ClCompile Include="OptimizationLimits.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NoiseCL.h" />
