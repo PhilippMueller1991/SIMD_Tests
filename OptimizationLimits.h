@@ -2,6 +2,6 @@
 class OptimizationLimits
 {
 public:
-	static void TestImplementations();
+	static void TestImplementations(int iter);
 };
 

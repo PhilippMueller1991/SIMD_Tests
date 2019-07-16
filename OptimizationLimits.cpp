@@ -4,19 +4,18 @@
 #include <chrono>
 #include <immintrin.h>
 
-inline float Func(float ax, float ay, float bx, float by) noexcept
+void OptimizationLimits::TestImplementations(int iter)
 {
-	return ax * ay + bx * by;
-}
+	constexpr int size = 64;
 
-void OptimizationLimits::TestImplementations()
-{
-	constexpr int iter = 64;
+	float a[size];
+	float b[size];
 
-	float a[iter];
-	float b[iter];
-	float c[iter];
+	for (int i = 1; i < iter; i++)
+	{
+		a[i] = a[i - 1] + b[i - 1];
 
-	for (int i = 0; i < iter-1; i++)
-		c[i] = Func(a[i], a[i + 1], b[i], b[i + 1]);
+		if (a[i] < 5)
+			break;
+	}
 }
