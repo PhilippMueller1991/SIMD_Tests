@@ -37,7 +37,8 @@ int main(int argc, char** argv)
 
 	//fclose(logFile);
 
-	OptimizationLimits::TestImplementations(iterations);
+	int test = 0;
+	OptimizationLimits::TestImplementations(&test);
 
 	return EXIT_SUCCESS;
 }

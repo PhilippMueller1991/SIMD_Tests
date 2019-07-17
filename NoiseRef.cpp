@@ -32,7 +32,7 @@ void NoiseRef::CreateImage(int width, int height, int iterations)
 		if (timeDelta < bestTime)
 			bestTime = timeDelta;
 	}
-	std::cout << bestTime.count() << "ns\n";
+	std::cout << bestTime.count() << " ns\n";
 
 	// Write data
 	Image::SaveBitmap("NoiseRef", width, height, data);

@@ -36,9 +36,6 @@
     <ClCompile Include="NoiseCL.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="OptimizationLimits.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="InstructionSetLevel.h">
@@ -57,9 +54,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="NoiseCL.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="OptimizationLimits.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

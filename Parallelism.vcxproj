@@ -127,7 +127,6 @@
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <BufferSecurityCheck>true</BufferSecurityCheck>
       <AdditionalIncludeDirectories>$(ProjectDir)\Libraries\Includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -150,7 +149,6 @@
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <BufferSecurityCheck>true</BufferSecurityCheck>
       <AdditionalIncludeDirectories>$(ProjectDir)\Libraries\Includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -167,12 +165,10 @@
     <ClCompile Include="NoiseCS.cpp" />
     <ClCompile Include="NoiseRef.cpp" />
     <ClCompile Include="NoiseSSE.cpp" />
-    <ClCompile Include="OptimizationLimits.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NoiseCL.h" />
     <ClInclude Include="NoiseCS.h" />
-    <ClInclude Include="OptimizationLimits.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="InstructionSetLevel.h" />
     <ClInclude Include="NoiseRef.h" />
