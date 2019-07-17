@@ -57,7 +57,7 @@ void NoiseAVX2::CreateImage(int width, int height, int iterations)
 		averageTime += timeDelta;
 	}
 	std::cout << "min: " << minTime.count() << " ns\t";
-	std::cout << "avg: " << averageTime.count() / iterations << "ns\n";
+	std::cout << "avg: " << averageTime.count() / iterations << " ns\n";
 
 	// Write data
 	Image::SaveBitmap("NoiseAVX2", widthAVX, height, data);

@@ -51,7 +51,7 @@ void NoiseSSE::CreateImage(int width, int height, int iterations)
 		averageTime += timeDelta;
 	}
 	std::cout << "min: " << minTime.count() << " ns\t";
-	std::cout << "avg: " << averageTime.count() / iterations << "ns\n";
+	std::cout << "avg: " << averageTime.count() / iterations << " ns\n";
 
 	// Write data
 	Image::SaveBitmap("NoiseSSE", widthSSE, height, data);

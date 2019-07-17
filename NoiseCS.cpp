@@ -110,7 +110,7 @@ void NoiseCS::CreateImage(int width, int height, int iterations)
 		averageTime += timeDelta;
 	}
 	std::cout << "min: " << minTime.count() << " ns\t";
-	std::cout << "avg: " << averageTime.count() / iterations << "ns\n";
+	std::cout << "avg: " << averageTime.count() / iterations << " ns\n";
 	// Read
 	data = static_cast<float*>(glMapBuffer(GL_SHADER_STORAGE_BUFFER, GL_READ_ONLY));
 

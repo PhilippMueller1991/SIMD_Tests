@@ -123,7 +123,7 @@ void NoiseCL::CreateImage(int width, int height, int iterations)
 		averageTime += timeDelta;
 	}
 	std::cout << "min: " << minTime.count() << " ns\t";
-	std::cout << "avg: " << averageTime.count() / iterations << "ns\n";
+	std::cout << "avg: " << averageTime.count() / iterations << " ns\n";
 
 	// Results
 	float* data = new float[element_count] { 0 };
