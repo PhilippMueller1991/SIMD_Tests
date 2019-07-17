@@ -161,6 +161,7 @@
     <ClCompile Include="glad.c" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="NoiseAVX2.cpp" />
     <ClCompile Include="NoiseCL.cpp" />
     <ClCompile Include="NoiseCS.cpp" />
     <ClCompile Include="NoiseRef.cpp">
@@ -170,6 +171,7 @@
     <ClCompile Include="NoiseSSE.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="NoiseAVX2.h" />
     <ClInclude Include="NoiseCL.h" />
     <ClInclude Include="NoiseCS.h" />
     <ClInclude Include="Image.h" />

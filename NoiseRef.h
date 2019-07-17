@@ -5,7 +5,6 @@ class NoiseRef
 public:
 	static void CreateImage(int width, int height, int iterations);
 
-private:
 	static inline float Fade(float t) noexcept;
 
 	static inline float Lerp(float a, float b, float t) noexcept;

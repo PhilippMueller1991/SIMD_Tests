@@ -4,13 +4,14 @@
 #include "InstructionSetLevel.h"
 #include "NoiseRef.h"
 #include "NoiseSSE.h"
+#include "NoiseAVX2.h"
 #include "NoiseCS.h"
 #include "NoiseCL.h"
 
 int iterations = 100;
 
 int start = 16;
-int end = 4096;
+int end = 512;
 
 
 // Good read about the topic of optimization
@@ -23,26 +24,37 @@ int end = 4096;
 int main(int argc, char** argv)
 {
 	// Write console output to file
-	FILE* logFile;
-	freopen_s(&logFile, "output.txt", "w", stdout);
+	//FILE* logFile;
+	//freopen_s(&logFile, "output.txt", "w", stdout);
 
 	std::cout << "\nReference implementation:\n";
 	for (int i = start; i <= end; i *= 2)
 		NoiseRef::CreateImage(i, i, iterations);
 
-	std::cout << "\nSSE implementation:\n";
-	for (int i = start; i <= end; i *= 2)
-		NoiseSSE::CreateImage(i, i, iterations);
+	//std::cout << "\nSSE2 implementation:\n";
+	//for (int i = start; i <= end; i *= 2)
+	//	NoiseSSE::CreateImage(i, i, iterations);
 
-	std::cout << "\nCS implementation:\n";
+	std::cout << "\nAVX2 implementation:\n";
 	for (int i = start; i <= end; i *= 2)
-		NoiseCS::CreateImage(i, i, iterations);
+		NoiseAVX2::CreateImage(i, i, iterations);
 
-	std::cout << "\nCL implementation:\n";
-	for (int i = start; i <= end; i *= 2)
-		NoiseCL::CreateImage(i, i, iterations);
+	//std::cout << "\nCS implementation:\n";
+	//for (int i = start; i <= end; i *= 2)
+	//	NoiseCS::CreateImage(i, i, iterations);
 
-	fclose(logFile);
+	//std::cout << "\nCL implementation:\n";
+	//for (int i = start; i <= end; i *= 2)
+	//	NoiseCL::CreateImage(i, i, iterations);
+
+	//fclose(logFile);
+
+	// Tests
+	//std::cout << "SSE tests...\n";
+	//NoiseSSE::RunTests();
+
+	std::cout << "AVX2 tests...\n";
+	NoiseAVX2::RunTests();
 
 	return EXIT_SUCCESS;
 }
