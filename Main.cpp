@@ -10,7 +10,7 @@
 int iterations = 100;
 
 int start = 16;
-int end = 512;
+int end = 4096;
 
 
 // Good read about the topic of optimization
@@ -23,8 +23,8 @@ int end = 512;
 int main(int argc, char** argv)
 {
 	// Write console output to file
-	//FILE* logFile;
-	//freopen_s(&logFile, "output.txt", "w", stdout);
+	FILE* logFile;
+	freopen_s(&logFile, "output.txt", "w", stdout);
 
 	std::cout << "\nReference implementation:\n";
 	for (int i = start; i <= end; i *= 2)
@@ -42,7 +42,7 @@ int main(int argc, char** argv)
 	for (int i = start; i <= end; i *= 2)
 		NoiseCL::CreateImage(i, i, iterations);
 
-	//fclose(logFile);
+	fclose(logFile);
 
 	return EXIT_SUCCESS;
 }

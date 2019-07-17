@@ -1,0 +1,46 @@
+
+Reference implementation:
+min: 6339 ns	avg: 6736ns
+min: 19017 ns	avg: 22454ns
+min: 76800 ns	avg: 98174ns
+min: 304030 ns	avg: 346530ns
+min: 1213438 ns	avg: 1299705ns
+min: 4865700 ns	avg: 5492845ns
+min: 19429643 ns	avg: 20187255ns
+min: 77909473 ns	avg: 80884461ns
+min: 313794871 ns	avg: 323988091ns
+
+SSE implementation:
+min: 6339 ns	avg: 6546ns
+min: 25843 ns	avg: 27467ns
+min: 102643 ns	avg: 108487ns
+min: 413500 ns	avg: 418832ns
+min: 1659853 ns	avg: 1691021ns
+min: 6655747 ns	avg: 6700159ns
+min: 26647858 ns	avg: 26816054ns
+min: 106715773 ns	avg: 107434929ns
+min: 427084959 ns	avg: 428625613ns
+
+CS implementation:
+min: 1950 ns	avg: 24941ns
+min: 1951 ns	avg: 15416ns
+min: 3901 ns	avg: 22084ns
+min: 5364 ns	avg: 32875ns
+min: 4388 ns	avg: 42491ns
+min: 97280 ns	avg: 147575ns
+min: 95574 ns	avg: 138885ns
+min: 115566 ns	avg: 185441ns
+min: 186026 ns	avg: 795912ns
+
+CL implementation:
+Using platform: NVIDIA CUDA
+Using device: GeForce GTX 1080
+min: 13653 ns	avg: 19963ns
+min: 330361 ns	avg: 405659ns
+min: 330605 ns	avg: 427604ns
+min: 329387 ns	avg: 420778ns
+min: 342796 ns	avg: 403179ns
+min: 352548 ns	avg: 489108ns
+min: 402285 ns	avg: 482973ns
+min: 863328 ns	avg: 1174438ns
+min: 2574625 ns	avg: 4244350ns
