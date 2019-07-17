@@ -22,7 +22,8 @@ void NoiseSSE::CreateImage(int width, int height, int iterations)
 
 	float* data = new float[widthSSE * height];
 
-	std::chrono::nanoseconds bestTime = std::chrono::nanoseconds::max();
+	std::chrono::nanoseconds minTime = std::chrono::nanoseconds::max();
+	std::chrono::nanoseconds averageTime = std::chrono::nanoseconds(0);
 	for (int i = 0; i < iterations; i++)
 	{
 		auto time = std::chrono::high_resolution_clock::now();
@@ -48,10 +49,13 @@ void NoiseSSE::CreateImage(int width, int height, int iterations)
 		}
 
 		auto timeDelta = std::chrono::high_resolution_clock::now() - time;
-		if (timeDelta < bestTime)
-			bestTime = timeDelta;
+		if (timeDelta < minTime)
+			minTime = timeDelta;
+
+		averageTime += timeDelta;
 	}
-	std::cout << bestTime.count() << " ns\n";
+	std::cout << "min: " << minTime.count() << " ns\t";
+	std::cout << "avg: " << averageTime.count() / iterations << "ns\n";
 
 	// Write data
 	Image::SaveBitmap("NoiseSSE", widthSSE, height, data);

@@ -96,7 +96,8 @@ void NoiseCL::CreateImage(int width, int height, int iterations)
 	cl::Buffer buffer_data;
 	cl::CommandQueue queue;
 
-	std::chrono::nanoseconds bestTime = std::chrono::nanoseconds::max();
+	std::chrono::nanoseconds minTime = std::chrono::nanoseconds::max();
+	std::chrono::nanoseconds averageTime = std::chrono::nanoseconds(0);
 	for (int i = 0; i < iterations; i++)
 	{
 		auto time = std::chrono::high_resolution_clock::now();
@@ -116,10 +117,13 @@ void NoiseCL::CreateImage(int width, int height, int iterations)
 		queue.enqueueNDRangeKernel(opencl_main, cl::NullRange, cl::NDRange(width, height), cl::NDRange(32,32));
 
 		auto timeDelta = std::chrono::high_resolution_clock::now() - time;
-		if (timeDelta < bestTime)
-			bestTime = timeDelta;
+		if (timeDelta < minTime)
+			minTime = timeDelta;
+
+		averageTime += timeDelta;
 	}
-	std::cout << bestTime.count() << " ns\n";
+	std::cout << "min: " << minTime.count() << " ns\t";
+	std::cout << "avg: " << averageTime.count() / iterations << "ns\n";
 
 	// Results
 	float* data = new float[element_count] { 0 };

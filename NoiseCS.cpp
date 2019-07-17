@@ -87,7 +87,8 @@ void NoiseCS::CreateImage(int width, int height, int iterations)
 	glDeleteShader(shader);
 
 	float* data;
-	std::chrono::nanoseconds bestTime = std::chrono::nanoseconds::max();
+	std::chrono::nanoseconds minTime = std::chrono::nanoseconds::max();
+	std::chrono::nanoseconds averageTime = std::chrono::nanoseconds(0);
 	for (int i = 0; i < iterations; i++)
 	{
 		auto time = std::chrono::high_resolution_clock::now();
@@ -103,11 +104,13 @@ void NoiseCS::CreateImage(int width, int height, int iterations)
 		glMemoryBarrier(GL_SHADER_STORAGE_BARRIER_BIT);
 
 		auto timeDelta = std::chrono::high_resolution_clock::now() - time;
-		if (timeDelta < bestTime)
-			bestTime = timeDelta;
-	}
-	std::cout << bestTime.count() << " ns\n";
+		if (timeDelta < minTime)
+			minTime = timeDelta;
 
+		averageTime += timeDelta;
+	}
+	std::cout << "min: " << minTime.count() << " ns\t";
+	std::cout << "avg: " << averageTime.count() / iterations << "ns\n";
 	// Read
 	data = static_cast<float*>(glMapBuffer(GL_SHADER_STORAGE_BUFFER, GL_READ_ONLY));
 
